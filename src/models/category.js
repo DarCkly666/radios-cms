@@ -22,8 +22,8 @@ export const Category = connection.define('category', {
   }
 }, {
   timestamps: true
-});
+})
 
-(async () => {
-  await connection.sync({ alter: true })
-})()
+/* (async () => {
+  await connection.sync({ force: true })
+})() */

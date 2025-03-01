@@ -2,7 +2,7 @@ import express from 'express'
 import expressEjsLayouts from 'express-ejs-layouts'
 import { connection } from './src/db/dbConfig.js'
 import { PORT } from './src/config/config.js'
-import { categoryRouter } from './src/routes/category.router.js'
+import { categoryRouter, countryRouter } from './src/routes/index.js'
 
 export class Server {
   constructor () {
@@ -22,7 +22,7 @@ export class Server {
   async dbConnection () {
     try {
       await connection.authenticate()
-      // await connection.sync({ force: true })
+      await connection.sync({ alter: true })
       console.log('Database connection successful')
     } catch (error) {
       console.log(error)
@@ -40,5 +40,6 @@ export class Server {
 
   routes () {
     this.app.use('/category', categoryRouter)
+    this.app.use('/country', countryRouter)
   }
 }
