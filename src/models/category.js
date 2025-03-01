@@ -13,9 +13,11 @@ export const Category = connection.define('category', {
     allowNull: false,
     unique: true,
     validate: {
-      notEmpty: [true, 'Name is required'],
-      max: [100, 'Name must be less than 100 characters'],
-      min: [2, 'Name must be more than 2 characters']
+      notEmpty: { msg: 'Name is required' },
+      len: {
+        args: [2, 100],
+        msg: 'Name must be between 2 and 100 characters'
+      }
     }
   }
 }, {

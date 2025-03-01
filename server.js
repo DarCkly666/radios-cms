@@ -1,4 +1,5 @@
 import express from 'express'
+import expressEjsLayouts from 'express-ejs-layouts'
 import { connection } from './src/db/dbConfig.js'
 import { PORT } from './src/config/config.js'
 import { categoryRouter } from './src/routes/category.router.js'
@@ -31,6 +32,8 @@ export class Server {
   middleware () {
     this.app.use(express.static('public'))
     this.app.set('view engine', 'ejs')
+    this.app.use(expressEjsLayouts)
+    this.app.set('views', 'views/')
     this.app.use(express.json())
     this.app.use(express.urlencoded({ extended: true }))
   }
