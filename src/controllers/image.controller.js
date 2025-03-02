@@ -1,3 +1,5 @@
+import fs from 'node:fs'
+import path from 'node:path'
 import { Image } from '../models/image.js'
 
 export const showAll = async (req, res) => {
@@ -32,6 +34,46 @@ export const save = async (req, res) => {
       errors = error.errors.map(error => error.message)
       return res.render('image/new', { errors })
     }
+    return res.render('shared/error_500')
+  }
+}
+
+export const showRemove = async (req, res) => {
+  try {
+    const { id } = req.params
+    const image = await Image.findByPk(id)
+    if (!image) {
+      return res.render('shared/error_404')
+    }
+    return res.render('image/delete', { image })
+  } catch (error) {
+    console.log('ERROR: ', error)
+    return res.render('shared/error_500')
+  }
+}
+
+export const remove = async (req, res) => {
+  try {
+    const { id } = req.params
+    const image = await Image.findByPk(id)
+
+    if (!image) {
+      return res.render('shared/error_404')
+    }
+
+    const filePath = path.join('public', image.path)
+
+    if (fs.existsSync(filePath)) {
+      fs.unlinkSync(filePath)
+    } else {
+      console.log('Archivo no encontrado:', filePath)
+    }
+
+    await image.destroy()
+
+    return res.redirect('/image')
+  } catch (error) {
+    console.error('ERROR:', error)
     return res.render('shared/error_500')
   }
 }
