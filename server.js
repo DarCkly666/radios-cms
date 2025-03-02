@@ -2,7 +2,7 @@ import express from 'express'
 import expressEjsLayouts from 'express-ejs-layouts'
 import { connection } from './src/db/dbConfig.js'
 import { PORT } from './src/config/config.js'
-import { categoryRouter, countryRouter, imageRouter } from './src/routes/index.js'
+import { categoryRouter, countryRouter, imageRouter, radioRouter } from './src/routes/index.js'
 
 export class Server {
   constructor () {
@@ -42,5 +42,6 @@ export class Server {
     this.app.use('/category', categoryRouter)
     this.app.use('/country', countryRouter)
     this.app.use('/image', imageRouter)
+    this.app.use('/radio', radioRouter)
   }
 }

@@ -39,7 +39,8 @@
     <% images.forEach(image => { %>
       <div class="relative">
         <img
-          class="h-auto max-w-full rounded-lg"
+          class="h-32 w-full rounded-lg object-cover"
+          style="height: 200px;"
           src="<%= image.path %>"
           alt="<%= image.created_at %>"
         />

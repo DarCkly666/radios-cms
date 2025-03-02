@@ -10,7 +10,7 @@ const storage = multer.diskStorage({
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
     const extension = path.extname(file.originalname)
     const filename = `${file.fieldname}-${uniqueSuffix}${extension}`
-    req.filename = destination.substring(7) + filename
+    req.filename = destination.substring(6) + filename
     cb(null, filename)
   }
 })
