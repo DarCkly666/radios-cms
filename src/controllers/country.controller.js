@@ -1,4 +1,5 @@
 import { Country } from '../models/country.js'
+import i18n from '../config/i18n.js'
 
 export const showAllList = async (req, res) => {
   try {
@@ -38,7 +39,7 @@ export const save = async (req, res) => {
   } catch (error) {
     let errors = []
     if (error.name === 'SequelizeUniqueConstraintError') {
-      errors.push('Name already exists.')
+      errors.push(i18n.__('validations.existsName'))
       return res.render('country/new', { errors })
     } else if (errors.name === 'SequelizeValidationError') {
       errors = error.errors.map(error => error.message)
@@ -75,7 +76,7 @@ export const update = async (req, res) => {
     const country = await Country.findByPk(id)
     let errors = []
     if (error.name === 'SequelizeUniqueConstraintError') {
-      errors.push('Name already exists.')
+      errors.push(i18n.__('validations.existsName'))
       return res.render('country/edit', { country, errors })
     } else if (error.name === 'SequelizeValidationError') {
       errors = error.errors.map(er => er.message)

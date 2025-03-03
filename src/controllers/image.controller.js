@@ -25,7 +25,6 @@ export const save = async (req, res) => {
     await Image.create({ path: filename })
     return res.redirect('/image')
   } catch (error) {
-    console.log('ERROR: ', error)
     if (error.name === 'FileValidationError') {
       return res.render('image/new', { errors: [error.message] })
     }
@@ -47,7 +46,6 @@ export const showRemove = async (req, res) => {
     }
     return res.render('image/delete', { image })
   } catch (error) {
-    console.log('ERROR: ', error)
     return res.render('shared/error_500')
   }
 }
@@ -66,14 +64,13 @@ export const remove = async (req, res) => {
     if (fs.existsSync(filePath)) {
       fs.unlinkSync(filePath)
     } else {
-      console.log('Archivo no encontrado:', filePath)
+      console.log('File not found:', filePath)
     }
 
     await image.destroy()
 
     return res.redirect('/image')
   } catch (error) {
-    console.error('ERROR:', error)
     return res.render('shared/error_500')
   }
 }

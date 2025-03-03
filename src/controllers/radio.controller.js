@@ -2,6 +2,7 @@ import { Radio } from '../models/radio.js'
 import { Category } from '../models/category.js'
 import { Image } from '../models/image.js'
 import { Country } from '../models/country.js'
+import i18n from '../config/i18n.js'
 
 export const getRadios = async (req, res) => {
   try {
@@ -48,13 +49,13 @@ export const save = async (req, res) => {
 
     const errors = []
     if (!countryId) {
-      errors.push('Select one country, please.')
+      errors.push(i18n.__('validations.requiredCountry'))
     }
     if (!imageId) {
-      errors.push('Select one image, please.')
+      errors.push(i18n.__('validations.requiredImage'))
     }
     if (!categoryIds || categoryIds.length === 0) {
-      errors.push('Select at least one category, please.')
+      errors.push(i18n.__('validations.requiredCategory'))
     }
     if (errors && errors.length > 0) {
       console.log(errors)
@@ -151,13 +152,13 @@ export const edit = async (req, res) => {
 
     const errors = []
     if (!countryId) {
-      errors.push('Select one country, please.')
+      errors.push(i18n.__('validations.requiredCountry'))
     }
     if (!imageId) {
-      errors.push('Select one image, please.')
+      errors.push(i18n.__('validations.requiredImage'))
     }
     if (!categoryIds || categoryIds.length === 0) {
-      errors.push('Select at least one category, please.')
+      errors.push(i18n.__('validations.requiredCategory'))
     }
     if (errors && errors.length > 0) {
       return res.render('radio/edit', { radio, countries, images, categories, errors })

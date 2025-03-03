@@ -3,6 +3,7 @@ import { connection } from '../db/dbConfig.js'
 import { Category } from './category.js'
 import { Country } from './country.js'
 import { Image } from './image.js'
+import i18n from '../config/i18n.js'
 
 export const Radio = connection.define('radio', {
   id: {
@@ -16,10 +17,10 @@ export const Radio = connection.define('radio', {
     allowNull: false,
     unique: false,
     validate: {
-      notEmpty: { msg: 'Name is required' },
+      notEmpty: { msg: i18n.__('validations.requiredName') },
       len: {
         args: [2, 100],
-        msg: 'Name must be between 2 and 100 characters'
+        msg: i18n.__('validations.rangeLengthName')
       }
     }
   },
@@ -28,10 +29,10 @@ export const Radio = connection.define('radio', {
     allowNull: false,
     unique: false,
     validate: {
-      notEmpty: { msg: 'Description is required' },
+      notEmpty: { msg: i18n.__('validations.requiredDescription') },
       len: {
         args: [2, 1000],
-        msg: 'Description must be between 2 and 1000 characters'
+        msg: i18n.__('validations.rangeLengthDescription')
       }
     }
   },
@@ -40,12 +41,12 @@ export const Radio = connection.define('radio', {
     allowNull: false,
     unique: false,
     validate: {
-      notEmpty: { msg: 'URL is required' },
+      notEmpty: { msg: i18n.__('validations.requiredUrl') },
       len: {
-        args: [2, 1000],
-        msg: 'URL must be between 2 and 1000 characters'
+        args: [2, 500],
+        msg: i18n.__('validations.rangeLengthUrl')
       },
-      isUrl: { msg: 'URL is not valid' }
+      isUrl: { msg: i18n.__('validations.validUrl') }
     }
   }
 }, {

@@ -1,5 +1,6 @@
 import { DataTypes } from 'sequelize'
 import { connection } from '../db/dbConfig.js'
+import i18n from '../config/i18n.js'
 
 export const Category = connection.define('category', {
   id: {
@@ -13,10 +14,10 @@ export const Category = connection.define('category', {
     allowNull: false,
     unique: true,
     validate: {
-      notEmpty: { msg: 'Name is required' },
+      notEmpty: { msg: i18n.__('validations.requiredName') },
       len: {
         args: [2, 100],
-        msg: 'Name must be between 2 and 100 characters'
+        msg: i18n.__('validations.rangeLengthName')
       }
     }
   }

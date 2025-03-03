@@ -1,5 +1,6 @@
 import { connection } from '../db/dbConfig.js'
 import { DataTypes } from 'sequelize'
+import i18n from '../config/i18n.js'
 
 export const Image = connection.define('image', {
   id: {
@@ -13,13 +14,13 @@ export const Image = connection.define('image', {
     validate: {
       len: {
         args: [5, 200],
-        msg: 'path must be between 5 and 200 characters'
+        msg: i18n.__('validations.rangeLengthPath')
       },
       notEmpty: {
-        msg: 'image must not be empty.'
+        msg: i18n.__('validations.requiredImage')
       },
       notNull: {
-        msg: 'Select one image file, please.'
+        msg: i18n.__('validations.requiredImage')
       }
     }
   }

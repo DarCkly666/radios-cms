@@ -1,5 +1,6 @@
 import { connection } from '../db/dbConfig.js'
 import { DataTypes } from 'sequelize'
+import i18n from '../config/i18n.js'
 
 export const Country = connection.define('country', {
   id: {
@@ -13,10 +14,10 @@ export const Country = connection.define('country', {
     unique: true,
     allowNull: false,
     validate: {
-      notEmpty: { msg: 'Name must not be empty.' },
+      notEmpty: { msg: i18n.__('validations.requiredName') },
       len: {
         args: [2, 100],
-        msg: 'Name must be between 2 and 100 characters.'
+        msg: i18n.__('validations.rangeLengthName')
       }
     }
   },
@@ -24,10 +25,10 @@ export const Country = connection.define('country', {
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
-      notEmpty: { msg: 'Code field must not be emtpy.' },
+      notEmpty: { msg: i18n.__('validations.requiredCode') },
       len: {
         args: [2, 10],
-        msg: 'Code must be between 2 and 100 characters.'
+        msg: i18n.__('validations.rangeLengthCode')
       }
     }
   }
