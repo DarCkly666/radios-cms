@@ -15,7 +15,15 @@
 		"rangeLengthCode": "Code must be between 2 and 10 characters",
 		"requiredImage": "Select one image, please.",
 		"requiredCountry": "Select one country, please.",
-		"requiredCategory": "Select at least one category, please."
+		"requiredCategory": "Select at least one category, please.",
+		"requiredEmail": "Email is required",
+		"validEmail": "Email is invalid",
+		"requiredPassword": "Password is required",
+		"validPassword": "Password must be between 8 and 50 characters",
+		"matchPassword": "Passwords must match",
+		"requiredRole": "Role is required",
+		"validRole": "Role is invalid",
+		"selectOne": "Select one"
 	},
 	"errors": {
 		"400": "Bad request",
@@ -52,6 +60,16 @@
 		"updatedAt": "Updated at",
 		"id": "ID",
 		"actions": "Actions",
-		"name": "Name"
+		"name": "Name",
+		"email": "Email",
+		"password": "Password",
+		"role": "Role",
+		"user": "User",
+		"users": "Users",
+		"select": "Select"
+	},
+	"messages": {
+		"deleteUser": "Are you sure you want to delete this user?",
+		"invalidCredentials": "Invalid credentials"
 	}
 }

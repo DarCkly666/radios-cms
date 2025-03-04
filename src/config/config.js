@@ -8,5 +8,6 @@ export const {
   DB_PASS = 'postgres',
   DB_NAME = 'radios',
   DB_PORT = 5432,
+  SALT_ROUNDS = 10,
   NODE_ENV = 'development'
 } = process.env
