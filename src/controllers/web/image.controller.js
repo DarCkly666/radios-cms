@@ -1,6 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
-import { Image } from '../models/image.js'
+import { Image } from '../../models/image.js'
 
 export const showAll = async (req, res) => {
   try {

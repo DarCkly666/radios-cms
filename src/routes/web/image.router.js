@@ -1,8 +1,8 @@
 import { Router } from 'express'
-import { showAll, showNew, save, showRemove, remove } from '../controllers/image.controller.js'
-import { upload } from '../config/storage.js'
-import { authorize } from '../middlewares/authorize.js'
-import { Role } from '../models/user.js'
+import { showAll, showNew, save, showRemove, remove } from '../../controllers/web/image.controller.js'
+import { upload } from '../../config/storage.js'
+import { authorize } from '../../middlewares/authorize.js'
+import { Role } from '../../models/user.js'
 
 export const imageRouter = Router()
 

@@ -1,7 +1,7 @@
-import i18n from '../config/i18n.js'
-import { User } from '../models/user.js'
-import { comparePassword, generateToken } from '../utils/crypto.js'
-import { NODE_ENV } from '../config/config.js'
+import i18n from '../../config/i18n.js'
+import { User } from '../../models/user.js'
+import { comparePassword, generateToken } from '../../utils/crypto.js'
+import { NODE_ENV } from '../../config/config.js'
 
 const labels = {
   email: i18n.__('titles.email'),

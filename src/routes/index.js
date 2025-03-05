@@ -1,7 +1,0 @@
-export * from './category.router.js'
-export * from './country.router.js'
-export * from './image.router.js'
-export * from './radio.router.js'
-export * from './main.router.js'
-export * from './user.router.js'
-export * from './auth.router.js'

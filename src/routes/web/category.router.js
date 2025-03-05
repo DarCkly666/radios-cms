@@ -1,7 +1,7 @@
 import { Router } from 'express'
-import { getAll, getById, create, save, update, deleteById, edit, remove } from '../controllers/category.controller.js'
-import { authorize } from '../middlewares/authorize.js'
-import { Role } from '../models/user.js'
+import { getAll, getById, create, save, update, deleteById, edit, remove } from '../../controllers/web/category.controller.js'
+import { authorize } from '../../middlewares/authorize.js'
+import { Role } from '../../models/user.js'
 
 export const categoryRouter = Router()
 

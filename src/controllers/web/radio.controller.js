@@ -1,8 +1,8 @@
-import { Radio } from '../models/radio.js'
-import { Category } from '../models/category.js'
-import { Image } from '../models/image.js'
-import { Country } from '../models/country.js'
-import i18n from '../config/i18n.js'
+import { Radio } from '../../models/radio.js'
+import { Category } from '../../models/category.js'
+import { Image } from '../../models/image.js'
+import { Country } from '../../models/country.js'
+import i18n from '../../config/i18n.js'
 
 export const getRadios = async (req, res) => {
   try {

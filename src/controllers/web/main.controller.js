@@ -1,8 +1,8 @@
-import { Category } from '../models/category.js'
-import { Country } from '../models/country.js'
-import { Image } from '../models/image.js'
-import { Radio } from '../models/radio.js'
-import { User } from '../models/user.js'
+import { Category } from '../../models/category.js'
+import { Country } from '../../models/country.js'
+import { Image } from '../../models/image.js'
+import { Radio } from '../../models/radio.js'
+import { User } from '../../models/user.js'
 
 export const main = async (req, res) => {
   try {

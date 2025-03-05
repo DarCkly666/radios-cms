@@ -1,7 +1,7 @@
 import { Router } from 'express'
-import { getRadios, showSave, save, showEdit, edit, showRemove, remove, showById } from '../controllers/radio.controller.js'
-import { authorize } from '../middlewares/authorize.js'
-import { Role } from '../models/user.js'
+import { getRadios, showSave, save, showEdit, edit, showRemove, remove, showById } from '../../controllers/web/radio.controller.js'
+import { authorize } from '../../middlewares/authorize.js'
+import { Role } from '../../models/user.js'
 
 export const radioRouter = Router()
 

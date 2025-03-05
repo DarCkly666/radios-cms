@@ -1,7 +1,7 @@
 import { Router } from 'express'
-import { showAllList, showById, showNew, showUpdate, showRemove, save, update, remove } from '../controllers/country.controller.js'
-import { authorize } from '../middlewares/authorize.js'
-import { Role } from '../models/user.js'
+import { showAllList, showById, showNew, showUpdate, showRemove, save, update, remove } from '../../controllers/web/country.controller.js'
+import { authorize } from '../../middlewares/authorize.js'
+import { Role } from '../../models/user.js'
 
 export const countryRouter = Router()
 

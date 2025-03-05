@@ -1,5 +1,5 @@
-import { Category } from '../models/category.js'
-import i18n from '../config/i18n.js'
+import { Category } from '../../models/category.js'
+import i18n from '../../config/i18n.js'
 
 export const getAll = async (req, res) => {
   try {

@@ -3,8 +3,7 @@ import expressEjsLayouts from 'express-ejs-layouts'
 import cookieParser from 'cookie-parser'
 import { connection } from './src/db/dbConfig.js'
 import { PORT } from './src/config/config.js'
-import { categoryRouter, countryRouter, imageRouter, radioRouter, routerMain, userRouter, loginRouter, logoutRouter } from './src/routes/index.js'
-import { authenticate } from './src/middlewares/authenticate.js'
+import routerWeb from './src/routes/web/index.js'
 
 export class Server {
   constructor () {
@@ -42,13 +41,6 @@ export class Server {
   }
 
   routes () {
-    this.app.use('/login', loginRouter)
-    this.app.use('/logout', authenticate, logoutRouter)
-    this.app.use('/', authenticate, routerMain)
-    this.app.use('/category', authenticate, categoryRouter)
-    this.app.use('/country', authenticate, countryRouter)
-    this.app.use('/image', authenticate, imageRouter)
-    this.app.use('/radio', authenticate, radioRouter)
-    this.app.use('/user', authenticate, userRouter)
+    this.app.use('/', routerWeb)
   }
 }

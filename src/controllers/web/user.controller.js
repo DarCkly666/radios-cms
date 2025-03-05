@@ -1,5 +1,5 @@
-import { User, Role } from '../models/user.js'
-import i18n from '../config/i18n.js'
+import { User, Role } from '../../models/user.js'
+import i18n from '../../config/i18n.js'
 
 const labels = {
   id: i18n.__('titles.id'),

@@ -1,5 +1,5 @@
-import { Country } from '../models/country.js'
-import i18n from '../config/i18n.js'
+import { Country } from '../../models/country.js'
+import i18n from '../../config/i18n.js'
 
 export const showAllList = async (req, res) => {
   try {
