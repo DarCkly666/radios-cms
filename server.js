@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser'
 import { connection } from './src/db/dbConfig.js'
 import { PORT } from './src/config/config.js'
 import routerWeb from './src/routes/web/index.js'
+import routerApi from './src/routes/api/index.js'
 
 export class Server {
   constructor () {
@@ -41,6 +42,7 @@ export class Server {
   }
 
   routes () {
+    this.app.use('/api/v1', routerApi)
     this.app.use('/', routerWeb)
   }
 }
