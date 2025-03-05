@@ -21,8 +21,9 @@ export const authenticate = async (req, res, next) => {
       res.clearCookie('token')
       return res.redirect('/login')
     }
-
-    req.user = user
+    const { password, ...safeUser } = user.get({ plain: true })
+    req.user = safeUser
+    res.locals.user = safeUser
     next()
   } catch (error) {
     console.error(error)

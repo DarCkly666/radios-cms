@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken'
 import { SALT_ROUNDS, JWT_SECRET } from '../config/config.js'
 
 export const hashPassword = async (password) => {
-  const salt = await bcrypt.genSalt(SALT_ROUNDS)
+  const salt = await bcrypt.genSalt(parseInt(SALT_ROUNDS))
   return await bcrypt.hash(password, salt)
 }
 

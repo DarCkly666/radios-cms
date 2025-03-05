@@ -21,12 +21,12 @@ export const showLogin = async (req, res) => {
 
 export const login = async (req, res) => {
   try {
-    const { email = '', password = '' } = req.body
+    const { email = '', password: pwd = '' } = req.body
     const user = await User.findOne({ where: { email } })
     if (!user) {
       return res.render('auth/login', { layout: false, labels, errors: [labels.invalidCredentials] })
     }
-    const isPasswordValid = await comparePassword(password, user.password)
+    const isPasswordValid = await comparePassword(pwd, user.password)
     if (!isPasswordValid) {
       return res.render('auth/login', { layout: false, labels, errors: [labels.invalidCredentials] })
     }
@@ -36,6 +36,8 @@ export const login = async (req, res) => {
       secure: NODE_ENV === 'production',
       sameSite: 'strict'
     })
+    const { password, ...userData } = user.get({ plain: true })
+    req.user = userData
     return res.redirect('/')
   } catch (error) {
     console.log(error)
