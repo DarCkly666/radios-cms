@@ -41,7 +41,7 @@ export const save = async (req, res) => {
     if (error.name === 'SequelizeUniqueConstraintError') {
       errors.push(i18n.__('validations.existsName'))
       return res.render('country/new', { errors })
-    } else if (errors.name === 'SequelizeValidationError') {
+    } else if (error.name === 'SequelizeValidationError') {
       errors = error.errors.map(error => error.message)
       return res.render('country/new', { errors })
     }

@@ -18,6 +18,10 @@ export const Country = connection.define('country', {
       len: {
         args: [2, 100],
         msg: i18n.__('validations.rangeLengthName')
+      },
+      notNull: {
+        args: [true],
+        msg: i18n.__('validations.requiredName')
       }
     }
   },
@@ -29,6 +33,10 @@ export const Country = connection.define('country', {
       len: {
         args: [2, 10],
         msg: i18n.__('validations.rangeLengthCode')
+      },
+      notNull: {
+        args: [true],
+        msg: i18n.__('validations.requiredCode')
       }
     }
   }

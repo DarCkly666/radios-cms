@@ -1,10 +1,10 @@
-import { Category } from '../../models/category.js'
+import { Country } from '../../models/country.js'
 
 export const getAll = async (req, res) => {
   try {
-    const categories = await Category.findAll()
-    return res.status(200).json({ data: categories })
-  } catch (error) {
+    const countries = await Country.findAll()
+    return res.status(200).json({ data: countries })
+  } catch (e) {
     return res.status(500).json({ errors: ['Unknown error'] })
   }
 }
@@ -12,25 +12,25 @@ export const getAll = async (req, res) => {
 export const getById = async (req, res) => {
   try {
     const { id } = req.params
-    const category = await Category.findByPk(id)
-    if (!category) {
-      return res.status(404).json({ errors: ['Category not found'] })
+    const country = await Country.findByPk(id)
+    if (!country) {
+      return res.status(404).json({ errors: ['Country not found'] })
     }
-    return res.status(200).json({ data: category })
-  } catch (error) {
+    return res.status(200).json({ data: country })
+  } catch (e) {
     return res.status(500).json({ errors: ['Unknown error'] })
   }
 }
 
 export const create = async (req, res) => {
   try {
-    const { name } = req.body
-    const category = await Category.create({ name })
-    return res.status(201).json({ data: category })
+    const { name, code } = req.body
+    const country = await Country.create({ name, code })
+    return res.status(201).json({ data: country })
   } catch (error) {
     let errors = []
     if (error.name === 'SequelizeUniqueConstraintError') {
-      errors.push('Category already exists')
+      errors.push('Country already exists')
       return res.status(409).json({ errors })
     } else if (error.name === 'SequelizeValidationError') {
       errors = error.errors.map(error => error.message)
@@ -43,20 +43,20 @@ export const create = async (req, res) => {
 export const update = async (req, res) => {
   try {
     const { id } = req.params
-    const { name } = req.body
-    const category = await Category.findByPk(id)
-    if (!category) {
-      return res.status(404).json({ errors: ['Category not found'] })
+    const country = await Country.findByPk(id)
+    if (!country) {
+      return res.status(404).json({ errors: ['Country not found'] })
     }
-    await category.update({ name })
-    return res.status(200).json({ data: category })
+    const { name, code } = req.body
+    await country.update({ name, code })
+    return res.status(200).json({ data: country })
   } catch (error) {
     let errors = []
     if (error.name === 'SequelizeUniqueConstraintError') {
-      errors.push('Category already exists')
+      errors.push('Country already exists')
       return res.status(409).json({ errors })
     } else if (error.name === 'SequelizeValidationError') {
-      errors = error.errors.map(error => error.message)
+      errors = error.errors.map(er => er.message)
       return res.status(400).json({ errors })
     }
     return res.status(500).json({ errors: ['Unknown error'] })
@@ -66,12 +66,12 @@ export const update = async (req, res) => {
 export const remove = async (req, res) => {
   try {
     const { id } = req.params
-    const category = await Category.findByPk(id)
-    if (!category) {
-      return res.status(404).json({ errors: ['Category not found'] })
+    const country = await Country.findByPk(id)
+    if (!country) {
+      return res.status(404).json({ errors: ['Country not found'] })
     }
-    await category.destroy()
-    return res.status(204).json({ data: category })
+    await country.destroy()
+    return res.status(204).json({ data: country })
   } catch (error) {
     return res.status(500).json({ errors: ['Unknown error'] })
   }

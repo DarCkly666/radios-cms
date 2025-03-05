@@ -21,6 +21,10 @@ export const Radio = connection.define('radio', {
       len: {
         args: [2, 100],
         msg: i18n.__('validations.rangeLengthName')
+      },
+      notNull: {
+        args: [true],
+        msg: i18n.__('validations.requiredName')
       }
     }
   },
@@ -33,6 +37,10 @@ export const Radio = connection.define('radio', {
       len: {
         args: [2, 1000],
         msg: i18n.__('validations.rangeLengthDescription')
+      },
+      notNull: {
+        args: [true],
+        msg: i18n.__('validations.requiredDescription')
       }
     }
   },
@@ -45,6 +53,10 @@ export const Radio = connection.define('radio', {
       len: {
         args: [2, 500],
         msg: i18n.__('validations.rangeLengthUrl')
+      },
+      notNull: {
+        args: [true],
+        msg: i18n.__('validations.requiredUrl')
       },
       isUrl: { msg: i18n.__('validations.validUrl') }
     }

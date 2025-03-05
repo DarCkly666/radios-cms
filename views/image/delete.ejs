@@ -91,7 +91,12 @@
       <p class="mb-3 text-gray-500 dark:text-gray-400">
         <strong>Updated At:</strong> <%= image.updatedAt %>
       </p>
-      <img src="/<%= image.path %>" height=100 alt="<%= image.id %>" class="w-full">
+      <img
+        src="<%= image.path %>"
+        height="100"
+        alt="<%= image.id %>"
+        class="w-full"
+      />
       <div class="my-5 flex gap-2">
         <form action="/image/delete/<%= image.id %>" method="POST">
           <button
