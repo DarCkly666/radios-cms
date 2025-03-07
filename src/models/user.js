@@ -46,7 +46,7 @@ export const User = connection.define('user', {
     allowNull: false,
     validate: {
       len: {
-        args: [8, 50],
+        args: [8, 60],
         msg: i18n.__('validations.validPassword')
       },
       notEmpty: {
@@ -64,13 +64,28 @@ export const User = connection.define('user', {
       },
       notEmpty: {
         msg: i18n.__('validations.requiredRole')
+      },
+      notNull: {
+        msg: i18n.__('validations.requiredRole')
       }
     }
   }
 },
 { timestamps: true })
 
-User.afterValidate(async (user, options) => {
+/* User.afterValidate(async (user, options) => {
+  console.log('afterValidate unHashed', user.password)
   const hashedPassword = await hashPassword(user.password)
   user.password = hashedPassword
+  console.log('afterValidate hashed', user.password)
+}) */
+
+User.beforeCreate(async (user, options) => {
+  user.password = await hashPassword(user.password)
+})
+
+User.beforeUpdate(async (user, options) => {
+  if (user.changed('password')) {
+    user.password = await hashPassword(user.password)
+  }
 })
